@@ -1,0 +1,46 @@
+
+      <div class="modal-header">
+        <h5 class="modal-title">Adicionar um Cliente!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="activeModal.close('Close click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <form [formGroup]="clienteForm" (ngSubmit)="saveCliente()">
+     
+              <div class="form-group">
+                <label for="exampleInputEmail1">Nome *</label>
+                <input type="text" class="form-control"  formControlName="Nome">
+                <div *ngIf="clienteForm.get('Nome').invalid && clienteForm.get('Nome').errors && 
+                    (clienteForm.get('Nome').dirty || clienteForm.get('Nome').touched)">
+                <small class="text-danger" *ngIf="clienteForm.get('Nome').hasError('required')">
+                    Insira um nome 
+                </small>
+ 
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Endereço *</label>
+                <input type="text" class="form-control" formControlName="Endereco">
+                <div *ngIf="clienteForm.get('Nome').invalid && clienteForm.get('Nome').errors && 
+                    (clienteForm.get('Nome').dirty || clienteForm.get('Nome').touched)">
+                <small class="text-danger" *ngIf="clienteForm.get('Nome').hasError('required')">
+                    Insira um Endereço
+                </small>
+ 
+                </div>
+              </div>
+
+              <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1" formControlName="Casado">
+                <label class="form-check-label" for="casado">Casado</label>
+              </div>
+               
+              <button type="submit" class="btn btn-primary"(click)="salvarCliente()" [disabled]="clienteForm.invalid">Adicionar</button>
+            </form>  
+      </div>
+    
+
+      
+ 
+ 
